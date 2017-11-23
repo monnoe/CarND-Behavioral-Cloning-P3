@@ -19,16 +19,16 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/figure1.png "original central image"
-[image2]: ./examples/figure1-1.png "original left image"
-[image3]: ./examples/figure1-2.png "original right image"
-[image4]: ./examples/figure1-3.png "flipped central image"
-[image5]: ./examples/figure1-4.png "flipped left image"
-[image6]: ./examples/figure1-5.png "flipped right image"
+[image1]: ./examples/figure_1.png "original central image"
+[image2]: ./examples/figure_1-1.png "original left image"
+[image3]: ./examples/figure_1-2.png "original right image"
+[image4]: ./examples/figure_1-3.png "flipped central image"
+[image5]: ./examples/figure_1-4.png "flipped left image"
+[image6]: ./examples/figure_1-5.png "flipped right image"
 
-[image01]: ./examples/"figure_1_using_udacity_data (succesful model).png" "Model Loss for model successfully trained on Udacity data"
-[image02]: ./examples/"figure_1b_using_adam.png" "example of Model Loss for model unsuccessfully trained on Kamil's data"
-[image03]: ./examples/"figure_1b_using_adam_5epochs_original_DNN_no_cropping.png" "example of Model Loss for model unsuccessfully trained on Kamil's data"
+[image01]: ./examples/figure_1_using_udacity_data%20(succesful%20model).png "Model Loss for model successfully trained on Udacity data"
+[image02]: ./examples/figure_1b_using_adam.png "example of Model Loss for model unsuccessfully trained on Kamil's data"
+[image03]: ./examples/figure_1b_using_adam_5epochs_original_DNN_no_cropping.png "example of Model Loss for model unsuccessfully trained on Kamil's data"
 
 [image04]: ./examples/"figure_1_using_udacity_data_scatter_plot_prediction (successful model).png" "predictions scatter plot of Model successfully trained on Udacity data"
 [image05]: ./examples/"figure_4_model2a.png" "example 1 of predictions scatter plot of Model unsuccessfully trained on Udacity data (without needing to test the model on the simulator)"
@@ -174,9 +174,9 @@ The model was tested by running it through the simulator in the "automatic mode"
 
 My models would converge and train, yielding very promising statistics in both training and validation phases (25% of the data was provided to validation), yet never managed to reliably drive the car beyond the first bend after crossing the bridge.  
 Here are examples of the statistics my models would train to, comparing an example of a successful training to examples of unsuccessful trainings:
-![alt text][image01]
-![alt text][image02]
-![alt text][image03]
+![Model Loss for model successfully trained on Udacity data][image01]
+![example 1 of Model Loss for model unsuccessfully trained on Kamil's data][image02]
+![example 2 of Model Loss for model unsuccessfully trained on Kamil's data][image03]
 
 This was independant of:
 	-the number of convolution layers included (having tried networks with as much as up to 6 convolution layers, see example networks above)
@@ -287,14 +287,14 @@ I had used two different datasets to separately train my network and try the res
 
 To augment the data set, I used all camera images available: right, center and left. I augmented the steering angle for the images coming from either the left or the right camera by .20(lines 72-73)
 Improvement brought in model_v2.py: setting the angle correction from 0.20 --> 0.25.  The car stays within the yellow lines on track, however the driving became more swervy around the first bend before the bridge (it did not "feel" safe or comfortable).
-![alt text](image1)
-![alt text](image2)
-![alt text](image3)
+![original central image][image1]
+![original left image][image2]
+![original right image][image3]
  
 I also flipped the images, in order to balance out the steering angles:  with the original dataset, the car driving in one same direction would "always" turn left. Flipping the image and multiplying the corresponding steering angle by -1 would allow to give the model an easy example of turning right, without collecting any additional data around the track.
-![alt text](image4)
-![alt text](image5)
-![alt text](image6)
+![flipped central image][image4]
+![flipped left image][image5]
+![flipped right image][image6]
 
 After the collection process, using the Udacity dataset, I had 3584 driving samples in the driving log (with an absolute steering angle value larger than 0.01).  The total number of samples used for the training is 10752 (=3584*3 (center, left and right images))
 I then preprocessed the data by flipping the dataset, bringing the total number of training samples available to the network to 21504.
